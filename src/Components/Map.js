@@ -7,52 +7,29 @@ class Map extends Component {
 	}
 
 	render() {
-		// console.log(this.props.restaurants);
-		// const markers = this.props.restaurants.map((marker) => 
-		// 	<Marker
-		// 	position = {{lat: marker.position.lat, lng: marker.position.lng }}
 
-		// 	 />
-		// 	)
-
-		// const markers = () => {
-		// 	return (
-		// 			{this.props.restaurants.map(marker => (
-		// 			<Marker
-		// 				position={{lat: marker.position.lat, lng: marker.position.lng}}
-		// 		 	>
-		// 	 			<InfoWindow>Hello!</InfoWindow>
-		//  			</Marker>	
-
-		// 			))}
-
-
-		// 		)
-		// }
-		
 
 		const EdinburghMap = withGoogleMap (props => (
 
 			
-
 			<GoogleMap
 				defaultCenter = {{lat: 55.9505012, lng: -3.1895519 }}
 				defaultZoom = {14}
 			>
-			
+
 			
 				{this.props.restaurants.map(marker => (
 					<Marker
 						position={{lat: marker.position.lat, lng: marker.position.lng}}
 				 	>
-			 			
+			 			<React.Fragment>
+			 				<InfoWindow>
+			 					<h3>{marker.title}</h3>
+			 				</InfoWindow>
+			 			</React.Fragment>
 		 			</Marker>	
 
-					))}
-			}
-
-		
-
+					))} 
 
 				
 	
