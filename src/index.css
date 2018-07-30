@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.componentContainer{
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+
+}
+
+.mapContainer{
+	width: 75%;
+}
+
+.sidebarContainer {
+	width: 25%;
+	border: 2px solid red;
+}
+
+.containerElement {
+	width: 100vw;
+	height: 100vh;
+}
+
+.mapElement{
+	height: 100%;
+}
+
