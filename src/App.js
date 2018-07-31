@@ -12,43 +12,17 @@ class App extends Component {
       {
         title: "Henderson's",
         position: {lat: 55.9541839, lng: -3.2004868},
-        infoWindowOpen: false        
       },
       {
         title: "Nova Pizza",
         position: {lat: 55.9566963, lng: -3.2050091},
-        infoWindowOpen: false
       }
 
       ] 
     }
-  this.toggleInfoWindow = this.toggleInfoWindow.bind(this);
+  
   }
 
-
-toggleInfoWindow(e, key) {
-  // console.log(e);
-  let marker = this.state.restaurants
-  // console.log(key)
-  // console.log(marker)
-
-  let selectedMarker = marker.filter(a => key === a.title)
-  console.log("selectedMarker is", selectedMarker )
-
-  
- 
-
-  // marker.map(marker => {
-  //   this.setState(state => ({
-  //       infoWindowOpen: !infoWindowOpen
-  //   }))
-  //     }
-  // )
-
-  // this.setState({
-  //   marker.infoWindowOpen = !marker.infoWindowOpen
-  // })
-}
 
 
   render() {
