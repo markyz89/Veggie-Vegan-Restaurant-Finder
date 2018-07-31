@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { withSriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import { Marker, InfoWindow } from 'react-google-maps'
+import RestaurantInfo from './RestaurantInfo'
 
 export default class RestaurantMarker extends Component {
 	constructor(props) {
@@ -39,9 +40,9 @@ render() {
 				 	>
 			 			<React.Fragment>
 			 			{this.state.infoWindowOpen === true && (
-			 				<InfoWindow>
-			 					<h3>{marker.title}</h3>
-			 				</InfoWindow>
+			 				<RestaurantInfo
+			 					marker={marker}
+			 				 />
 			 				)}
 			 			</React.Fragment>
 		 			</Marker>	

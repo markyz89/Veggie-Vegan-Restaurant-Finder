@@ -9,8 +9,6 @@ class Map extends Component {
 	}
 
 
-
-
 	render() {
 
 

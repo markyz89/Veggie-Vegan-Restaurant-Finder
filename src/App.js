@@ -24,6 +24,17 @@ class App extends Component {
   }
 
 
+componentDidMount() {
+fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&query=vegan,vegetarian&client_id=XTZDTYMEUQQBOBOF114BI0C0NLJJC0K3DMBP4Q25YZAC5AYS&client_secret=KWTAY4DDBU1FOPJNHZGVRAPAFKFXSMUZQDEDUPGADWBYAJ1N&v=20180731')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log("error =",error))
+}
+
+
+
+// https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&query=vegan,vegetarian&client_id=XTZDTYMEUQQBOBOF114BI0C0NLJJC0K3DMBP4Q25YZAC5AYS&client_secret=KWTAY4DDBU1FOPJNHZGVRAPAFKFXSMUZQDEDUPGADWBYAJ1N&v=20180731
+
 
   render() {
     return (
