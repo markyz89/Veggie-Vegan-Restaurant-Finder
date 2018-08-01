@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by' 
+
 
 class Sidebar extends Component {
 	constructor(props) {
@@ -11,36 +10,24 @@ class Sidebar extends Component {
 		}
 	}
 
-	updateQuery(query) {
-		this.setState({query: query.trim()})
-	} 
-
+	
 
 
   render() {
 
-  	let filteredRestaurants
-  	if(this.state.query) {
-  		const match = new RegExp(escapeRegExp(this.state.query), 'i')
-  		filteredRestaurants = this.props.restaurants.filter((restaurant) => match.test(restaurant.name))
-  	} else {
-  		filteredRestaurants = this.props.restaurants
-  	}
+  	let filteredRestaurants = this.props.filteredRestaurants
 
   	let restaurants = this.props.restaurants
     return (
     	<div>
-			<input 
-			type='text'
-			placeholder="Filter restaurants"
-			value={this.state.query}
-			onChange={(event) => this.updateQuery(event.target.value)}
-
-			/>
+			
 			{/* JSON.stringify(this.state) */}
 			<ul className="sidebarList">
 				{filteredRestaurants.map(restaurant => (
-					<li className="listRestaurant">{restaurant.name}</li>
+					<li 
+					className="listRestaurant"
+					key={restaurant.id}
+					>{restaurant.name}</li>
 
 					))}
 			</ul>
@@ -52,3 +39,8 @@ class Sidebar extends Component {
 export default Sidebar;
 
 // credit lesson 3.7 of the React part of the Nanodegree course
+
+// might need to move the filteredRestaurants list up to the parent state - App.js
+// then would be able to pass filteredRestaurants down to both Map.js and Sidebar.js, 
+// thus the filtered list is the same for both 
+// Create a new input component to host the input field? Do it the simple way first.

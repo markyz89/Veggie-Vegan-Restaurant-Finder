@@ -21,9 +21,10 @@ class Map extends Component {
 			>
 
 			
-				{this.props.restaurants.map(marker => (
+				{this.props.filteredRestaurants.map(marker => (
 					<RestaurantMarker
 					marker={marker}
+					key={marker.id}
 
 					 />
 
