@@ -5,9 +5,12 @@ class Sidebar extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state={
-			query: ''
-		}
+	}
+
+	handleClick(e, key) {
+		// console.log("event is",e)
+		// console.log("key is", key)
+		this.props.onHandleClick(e, key)
 	}
 
 	
@@ -27,7 +30,10 @@ class Sidebar extends Component {
 					<li 
 					className="listRestaurant"
 					key={restaurant.id}
-					>{restaurant.name}</li>
+					id={restaurant.id}
+					onClick={(e, key) => this.handleClick(e, restaurant.id)}
+					>{restaurant.name}
+					</li>
 
 					))}
 			</ul>

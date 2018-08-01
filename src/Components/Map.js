@@ -9,9 +9,25 @@ class Map extends Component {
 	}
 
 
+	updateMarkerFromClick(e, key) {
+		
+		
+		// console.log("this won't work", key)
+		// if(key) {
+		//     this.setState({
+		//     listKey: key
+		//     })  
+	 //    }
+	}
+
+
 	render() {
 
-		// console.log(this.props.restaurants)
+		// console.log("list key =",this.props.onHandleClick)
+		// console.log("or maybe list key =",this.props.listKey)
+		// console.log(this.props.markerToAnimate)
+		let markerToAnimate = this.props.markerToAnimate
+
 		const EdinburghMap = withGoogleMap (props => (
 
 			
@@ -25,11 +41,13 @@ class Map extends Component {
 					<RestaurantMarker
 					marker={marker}
 					key={marker.id}
+					id={marker.id}
+					markerToAnimate={markerToAnimate}
 
-					 />
+					 /> 
 
 					))} 
-			}
+			
 			
 				
 	

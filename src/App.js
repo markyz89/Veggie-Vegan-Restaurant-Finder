@@ -11,9 +11,11 @@ class App extends Component {
 
     this.state= {
       restaurants: [],
-      query: '' 
+      query: '', 
+      markerToAnimate: ''
     }
-  
+
+  this.onHandleClick = this.onHandleClick.bind(this)
   }
 
 
@@ -31,6 +33,17 @@ updateQuery(query) {
   } 
 
 
+onHandleClick(e, key) {
+  // console.log("event is",e)
+  // console.log("key is", key)
+  // console.log("key in app", listKey) 
+  let markerToAnimate = this.state.restaurants.filter(r => r.id === key)
+    // console.log("marker to animate is", markerToAnimate)
+  this.setState({
+    markerToAnimate: markerToAnimate
+  })
+   
+} 
 
 
   render() {
@@ -43,25 +56,38 @@ updateQuery(query) {
     }
 
 
+    // console.log("in the render", listKey)
+
+
     return (
       <div className="App">
         <div className="componentContainer">
          <div className="sidebarContainer">
-         <input 
-            type='text'
-            placeholder="Filter restaurants"
-            value={this.state.query}
-            onChange={(event) => this.updateQuery(event.target.value)}
-          />
+         <div className="logoContainer">
+           <h1>Veggie/Vegan Restaurant Finder</h1>
+           <h2>Edinburgh</h2>
+           <input 
+              className="restaurantFilter"
+              type='text'
+              placeholder="Filter restaurants"
+              value={this.state.query}
+              onChange={(event) => this.updateQuery(event.target.value)}
+            />
+          </div>
             <Sidebar 
             restaurants={this.state.restaurants}
-            filteredRestaurants={filteredRestaurants}/>
+            filteredRestaurants={filteredRestaurants}
+            onHandleClick={this.onHandleClick}/>
           </div>
          <div className="mapContainer">   
           <Map
             restaurants = {this.state.restaurants}
             onMarkerClick = {this.toggleInfoWindow}
             filteredRestaurants={filteredRestaurants}
+            onHandleClick={this.onHandleClick}
+            markerToAnimate={this.state.markerToAnimate}
+            
+            
           />
           
          </div>

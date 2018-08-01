@@ -8,6 +8,9 @@ body {
 	display: flex;
 	width: 100vw;
 	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	
 
 }
 
@@ -15,13 +18,34 @@ body {
 	width: 75%;
 }
 
+.logoContainer{
+	color: #fff;
+	background-color: #008375;
+	margin: 0 0 -16px 0;
+	padding: 2%;
+}
+
+h1{
+	margin: 0 0 5px 0;
+}
+
+h2 {
+	margin: 10px 0 10px 0;
+}
+
+.restaurantFilter{
+	margin-bottom: 10px;
+}
+
 .sidebarContainer {
 	width: 25%;
-	border: 2px solid red;
+	height: 100vh;
+	/*border: 2px solid #f8991d;*/
+	overflow-y: auto;
 }
 
 .containerElement {
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 }
 
@@ -31,9 +55,28 @@ body {
 
 .listRestaurant{
 	list-style: none;
-	padding: 2% 0;
+	padding: 3% 0;
+	border: 1px solid #f8991d;
+	color: #008375;
+	font-size: 1em;
+	font-weight: 600;
+	font-family: "Helvetica";
+}
+
+.listRestaurant:hover{
+	cursor: pointer;
 }
 
 .sidebarList{
 	padding: 0;
+	/*height: 64vh;*/
+}
+
+.fourSquareCredit{
+	font-size: 10px;
+	color: #2d5be3;
+}
+
+@media all and (max-width: 955px) {
+	/*will have to rearrange everything at this break point*/
 }

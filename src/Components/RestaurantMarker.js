@@ -8,14 +8,17 @@ export default class RestaurantMarker extends Component {
 
 
 	this.state = {
-			infoWindowOpen: false
+			infoWindowOpen: false,
+			animation: ''
 		}
+
+		this.handleClick = this.handleClick.bind(this)
 	}
 
 		handleClick(e, key) {
 		let markerClick = e
-		console.log("e in mapjs =", markerClick)
-		console.log(key)
+		// console.log("e in mapjs =", markerClick)
+		// console.log(key)
 		let infoWindowOpen = this.state.infoWindowOpen
 		this.setState({
 			infoWindowOpen: !infoWindowOpen
@@ -27,16 +30,40 @@ export default class RestaurantMarker extends Component {
 		
 	}
 
+	
+
+
 
 
 render() {
+
+	let markerToAnimate = this.props.markerToAnimate
+	let infoWindowOpen = this.state.infoWindowOpen
+	let animation = this.state.animation
+	// console.log(this.props.id)
+	if(markerToAnimate && infoWindowOpen === false)
+	markerToAnimate.map(m => {
+		console.log(m.id)
+		if(m.id === this.props.id)
+			this.setState({
+				infoWindowOpen: !infoWindowOpen,
+				animation: 4
+			})
+	})
+	// console.log(this.props.markerToAnimate)
 	let marker = this.props.marker
+	
+		if(this.props.markerToAnimate.id === marker.id){
+			
+		}
+	
 	return (
 
 		<Marker
 						key={marker.title}
 						position={{lat: marker.location.lat, lng: marker.location.lng}}
-						onClick={(e) => this.handleClick(e, marker.title)}
+						onClick={(e, key) => this.handleClick(e, this.props.marker.id)}
+						animation={this.state.animation}
 				 	>
 			 			<React.Fragment>
 			 			{this.state.infoWindowOpen === true && (
