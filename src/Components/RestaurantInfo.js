@@ -6,7 +6,7 @@ function RestaurantInfo(props) {
 	
 	return(
 		<InfoWindow>
-			<h3>{props.marker.title}</h3>
+			<h3>{props.marker.name}</h3>
 		</InfoWindow>
 
 		)

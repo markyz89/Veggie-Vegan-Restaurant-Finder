@@ -11,7 +11,7 @@ class Map extends Component {
 
 	render() {
 
-
+		// console.log(this.props.restaurants)
 		const EdinburghMap = withGoogleMap (props => (
 
 			
@@ -28,7 +28,8 @@ class Map extends Component {
 					 />
 
 					))} 
-
+			}
+			
 				
 	
 			</GoogleMap>

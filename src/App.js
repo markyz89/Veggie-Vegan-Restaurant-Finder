@@ -8,26 +8,18 @@ class App extends Component {
     super(props);
 
     this.state= {
-      restaurants: [
-      {
-        title: "Henderson's",
-        position: {lat: 55.9541839, lng: -3.2004868},
-      },
-      {
-        title: "Nova Pizza",
-        position: {lat: 55.9566963, lng: -3.2050091},
-      }
-
-      ] 
+      restaurants: [] 
     }
   
   }
 
 
 componentDidMount() {
-fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&query=vegan,vegetarian&client_id=XTZDTYMEUQQBOBOF114BI0C0NLJJC0K3DMBP4Q25YZAC5AYS&client_secret=KWTAY4DDBU1FOPJNHZGVRAPAFKFXSMUZQDEDUPGADWBYAJ1N&v=20180731')
+fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&categoryId=4bf58dd8d48988d1d3941735&client_id=XTZDTYMEUQQBOBOF114BI0C0NLJJC0K3DMBP4Q25YZAC5AYS&client_secret=KWTAY4DDBU1FOPJNHZGVRAPAFKFXSMUZQDEDUPGADWBYAJ1N&v=20180731')
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => this.setState({
+    restaurants: data.response.venues
+  }))
   .catch(error => console.log("error =",error))
 }
 
@@ -41,7 +33,8 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&quer
       <div className="App">
         <div className="componentContainer">
          <div className="sidebarContainer">
-            <Sidebar />
+            <Sidebar 
+            restaurants={this.state.restaurants}/>
           </div>
          <div className="mapContainer">   
           <Map

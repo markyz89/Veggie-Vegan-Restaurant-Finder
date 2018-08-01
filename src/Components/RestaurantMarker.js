@@ -35,7 +35,7 @@ render() {
 
 		<Marker
 						key={marker.title}
-						position={{lat: marker.position.lat, lng: marker.position.lng}}
+						position={{lat: marker.location.lat, lng: marker.location.lng}}
 						onClick={(e) => this.handleClick(e, marker.title)}
 				 	>
 			 			<React.Fragment>

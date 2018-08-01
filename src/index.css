@@ -29,3 +29,11 @@ body {
 	height: 100%;
 }
 
+.listRestaurant{
+	list-style: none;
+	padding: 2% 0;
+}
+
+.sidebarList{
+	padding: 0;
+}
