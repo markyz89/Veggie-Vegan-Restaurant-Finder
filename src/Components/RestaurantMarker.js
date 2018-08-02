@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Marker, InfoWindow } from 'react-google-maps'
 import RestaurantInfo from './RestaurantInfo'
+import broccoli from '../broccoli.png'
 
 export default class RestaurantMarker extends Component {
 	constructor(props) {
@@ -64,6 +65,8 @@ render() {
 						position={{lat: marker.location.lat, lng: marker.location.lng}}
 						onClick={(e, key) => this.handleClick(e, this.props.marker.id)}
 						animation={this.state.animation}
+						icon={broccoli}
+						className="broccoliIcons"
 				 	>
 			 			<React.Fragment>
 			 			{this.state.infoWindowOpen === true && (

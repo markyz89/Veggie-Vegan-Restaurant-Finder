@@ -1,0 +1,31 @@
+
+
+this.state = {
+			displaySidebar: false
+		}
+
+
+
+
+
+			sidebarHandler() {
+  let displaySidebar = this.state.displaySidebar
+  this.setState({
+    displaySidebar: !displaySidebar
+  })
+}
+
+
+    const popOutSideBar = {
+    left: '25%'
+    }
+
+    const sidebar = this.state.displaySidebar
+
+    let showSidebar = {
+      if (sidebar) {
+        showSidebar = popOutSideBar
+      }
+    }
+
+     style={showSidebar}

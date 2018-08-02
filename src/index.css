@@ -73,10 +73,39 @@ h2 {
 }
 
 .fourSquareCredit{
-	font-size: 10px;
+	font-size: 9px;
 	color: #2d5be3;
+	margin: 1% 0;
+}
+
+.broccoliIcons{
+	width: 75px;
+	height: auto;
+}
+
+@media all and (min-width: 956px) {
+	.displaySidebar {
+		display: none;
+	}
 }
 
 @media all and (max-width: 955px) {
 	/*will have to rearrange everything at this break point*/
+	.sidebarContainer{
+		position: absolute;
+		left: -25%;
+	}
+
+	.mapContainer {
+		width: 100%;
+	}
+
+	#displaySidebar{
+		width: 30px;
+   		height: 30px;
+    	cursor: pointer;
+	    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
+	    background-size: contain;
+	}
+
 }

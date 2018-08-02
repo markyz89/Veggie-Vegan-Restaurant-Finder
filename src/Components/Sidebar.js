@@ -5,6 +5,8 @@ class Sidebar extends Component {
 	constructor(props) {
 		super(props);
 
+		
+		
 	}
 
 	handleClick(e, key) {
@@ -13,10 +15,13 @@ class Sidebar extends Component {
 		this.props.onHandleClick(e, key)
 	}
 
+
 	
 
 
   render() {
+
+
 
   	let filteredRestaurants = this.props.filteredRestaurants
 

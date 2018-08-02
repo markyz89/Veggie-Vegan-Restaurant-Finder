@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withSriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import RestaurantMarker from './RestaurantMarker'
 
 class Map extends Component {

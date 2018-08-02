@@ -12,10 +12,12 @@ class App extends Component {
     this.state= {
       restaurants: [],
       query: '', 
-      markerToAnimate: ''
+      markerToAnimate: '',
+      
     }
 
   this.onHandleClick = this.onHandleClick.bind(this)
+ 
   }
 
 
@@ -43,7 +45,10 @@ onHandleClick(e, key) {
     markerToAnimate: markerToAnimate
   })
    
-} 
+}
+
+
+
 
 
   render() {
@@ -58,11 +63,19 @@ onHandleClick(e, key) {
 
     // console.log("in the render", listKey)
 
+  
+
 
     return (
       <div className="App">
         <div className="componentContainer">
-         <div className="sidebarContainer">
+         <input type="button" className="displaySidebar"
+                onClick={this.sidebarHandler}
+                 />
+         <div className="sidebarContainer"
+            
+             
+                  >
          <div className="logoContainer">
            <h1>Veggie/Vegan Restaurant Finder</h1>
            <h2>Edinburgh</h2>
