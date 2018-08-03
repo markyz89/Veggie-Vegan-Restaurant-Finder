@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react'
 import Map from './Components/Map'
 import Sidebar from './Components/Sidebar'
 import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by' 
 import './App.css';
 
 class App extends Component {
@@ -13,22 +13,32 @@ class App extends Component {
       restaurants: [],
       query: '', 
       markerToAnimate: '',
+      menuOpen: false
       
     }
 
   this.onHandleClick = this.onHandleClick.bind(this)
- 
+  this.openMenu = this.openMenu.bind(this)
+
+
   }
 
 
 componentDidMount() {
+
+// console.log(ReactDOM.findDOMNode(this.refs.RestaurantMarker.infoWindow))
+
+
 fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&categoryId=4bf58dd8d48988d1d3941735&client_id=XTZDTYMEUQQBOBOF114BI0C0NLJJC0K3DMBP4Q25YZAC5AYS&client_secret=KWTAY4DDBU1FOPJNHZGVRAPAFKFXSMUZQDEDUPGADWBYAJ1N&v=20180731')
   .then(response => response.json())
   .then(data => this.setState({
     restaurants: data.response.venues
   }))
   .catch(error => console.log("error =",error))
+  
 }
+
+
 
 updateQuery(query) {
     this.setState({query: query})
@@ -47,6 +57,12 @@ onHandleClick(e, key) {
    
 }
 
+openMenu() {
+  const menuOpen = this.state.menuOpen
+  this.setState({
+    menuOpen: !menuOpen,
+  })
+}
 
 
 
@@ -63,17 +79,27 @@ onHandleClick(e, key) {
 
     // console.log("in the render", listKey)
 
-  
+    
+    let openOrClose = "sidebarContainer"
+    if(this.state.menuOpen === true) {
+      openOrClose = ""
+    }
 
+ 
+   
 
     return (
       <div className="App">
         <div className="componentContainer">
-         <input type="button" className="displaySidebar"
-                onClick={this.sidebarHandler}
-                 />
-         <div className="sidebarContainer"
-            
+         <div className="hamburgerDiv"
+            >
+           <i className="fas fa-bars"
+              onClick={this.openMenu}
+            ></i>
+         </div>
+         <div className={openOrClose}
+        
+                         
              
                   >
          <div className="logoContainer">
@@ -92,7 +118,8 @@ onHandleClick(e, key) {
             filteredRestaurants={filteredRestaurants}
             onHandleClick={this.onHandleClick}/>
           </div>
-         <div className="mapContainer">   
+         <div className="mapContainer"
+             >   
           <Map
             restaurants = {this.state.restaurants}
             onMarkerClick = {this.toggleInfoWindow}
