@@ -30,10 +30,12 @@ class Sidebar extends Component {
     	<div>
 			
 			{/* JSON.stringify(this.state) */}
+			{filteredRestaurants && ( 
 			<ul className="sidebarList">
 				{filteredRestaurants.map(restaurant => (
 					<li 
 					className="listRestaurant"
+					tabIndex="0"
 					key={restaurant.id}
 					id={restaurant.id}
 					onClick={(e, key) => this.handleClick(e, restaurant.id)}
@@ -42,6 +44,7 @@ class Sidebar extends Component {
 
 					))}
 			</ul>
+			)}
       	</div>
     );
   }

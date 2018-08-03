@@ -37,13 +37,13 @@ h2 {
 	margin-bottom: 10px;
 }
 
-.sidebarContainer {
+/*.sidebarContainer {
 	width: 25%;
 	height: 100vh;
 	left: 0;
-	/*border: 2px solid #f8991d;*/
+	border: 2px solid #f8991d;
 	overflow-y: auto;
-}
+}*/
 
 .containerElement {
 	width: 100%;
@@ -93,21 +93,34 @@ h2 {
 	cursor: pointer;
 }
 
+h1.listError {
+    margin: 50px 0 5px 0;
+}
+
 @media all and (min-width: 956px) {
 	.hamburgerDiv {
 		display: none;
 	}
-	.sidebarContainer {
+	.sidebarContainerFS {
 		width: 25%;
+		overflow-y: scroll;
 	}
 }
 
 @media all and (max-width: 955px) {
 	/*will have to rearrange everything at this break point*/
-	.sidebarContainer{
+	.sidebarContainerHide{
 		position: absolute;
-		left: -25%;
+		left: -100%;
 		width: 25%;
+		
+	}
+
+	.sidebarContainerShow{
+		width: 380%;
+		left: 0;
+		overflow-y: scroll;
+
 	}
 
 	.mapContainer {

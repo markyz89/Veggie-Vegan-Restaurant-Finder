@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react'
 import Map from './Components/Map'
 import Sidebar from './Components/Sidebar'
+import MapError from './Components/MapError'
+import ListError from './Components/ListError'
 import escapeRegExp from 'escape-string-regexp'
 import './App.css';
 
@@ -13,7 +15,8 @@ class App extends Component {
       restaurants: [],
       query: '', 
       markerToAnimate: '',
-      menuOpen: false
+      menuOpen: false,
+      apiError: false
       
     }
 
@@ -26,15 +29,15 @@ class App extends Component {
 
 componentDidMount() {
 
-// console.log(ReactDOM.findDOMNode(this.refs.RestaurantMarker.infoWindow))
-
 
 fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&categoryId=4bf58dd8d48988d1d3941735&client_id=XTZDTYMEUQQBOBOF114BI0C0NLJJC0K3DMBP4Q25YZAC5AYS&client_secret=KWTAY4DDBU1FOPJNHZGVRAPAFKFXSMUZQDEDUPGADWBYAJ1N&v=20180731')
   .then(response => response.json())
   .then(data => this.setState({
     restaurants: data.response.venues
   }))
-  .catch(error => console.log("error =",error))
+  .catch(error => this.setState({
+    apiError: true
+  }))
   
 }
 
@@ -67,6 +70,7 @@ openMenu() {
 
 
 
+
   render() {
     let filteredRestaurants
     if(this.state.query) {
@@ -80,9 +84,9 @@ openMenu() {
     // console.log("in the render", listKey)
 
     
-    let openOrClose = "sidebarContainer"
+    let openOrClose = "sidebarContainerFS sidebarContainerHide"
     if(this.state.menuOpen === true) {
-      openOrClose = ""
+      openOrClose = "sidebarContainerFS sidebarContainerShow"
     }
 
  
@@ -97,39 +101,48 @@ openMenu() {
               onClick={this.openMenu}
             ></i>
          </div>
-         <div className={openOrClose}
-        
-                         
-             
-                  >
+         <div className={openOrClose}>
+
          <div className="logoContainer">
-           <h1>Veggie/Vegan Restaurant Finder</h1>
-           <h2>Edinburgh</h2>
+           <h1 tabIndex="0">Veggie/Vegan Restaurant Finder</h1>
+           <h2 tabIndex="0">Edinburgh</h2>
            <input 
               className="restaurantFilter"
               type='text'
+              aria-label='Filter the list of Restaurants'
               placeholder="Filter restaurants"
               value={this.state.query}
               onChange={(event) => this.updateQuery(event.target.value)}
             />
           </div>
+          {(filteredRestaurants) ?
             <Sidebar 
-            restaurants={this.state.restaurants}
-            filteredRestaurants={filteredRestaurants}
-            onHandleClick={this.onHandleClick}/>
-          </div>
-         <div className="mapContainer"
-             >   
-          <Map
-            restaurants = {this.state.restaurants}
-            onMarkerClick = {this.toggleInfoWindow}
-            filteredRestaurants={filteredRestaurants}
-            onHandleClick={this.onHandleClick}
-            markerToAnimate={this.state.markerToAnimate}
-            
-            
-          />
+              restaurants={this.state.restaurants}
+              filteredRestaurants={filteredRestaurants}
+              onHandleClick={this.onHandleClick}
+              apiError={this.state.apiError}/>
+            :                
+              <ListError
+              />
+             
+            }
+             
           
+          </div>
+         <div className="mapContainer">   
+          
+            <MapError>
+
+              <Map
+                restaurants = {this.state.restaurants}
+                onMarkerClick = {this.toggleInfoWindow}
+                filteredRestaurants={filteredRestaurants}
+                onHandleClick={this.onHandleClick}
+                markerToAnimate={this.state.markerToAnimate}
+                apiError={this.state.apiError}           
+              />
+
+            </MapError>
          </div>
         </div>
       </div>
