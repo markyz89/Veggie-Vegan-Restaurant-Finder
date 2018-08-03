@@ -40,6 +40,7 @@ h2 {
 .sidebarContainer {
 	width: 25%;
 	height: 100vh;
+	left: 0;
 	/*border: 2px solid #f8991d;*/
 	overflow-y: auto;
 }
@@ -83,9 +84,21 @@ h2 {
 	height: auto;
 }
 
+.fa-bars {
+	color: white;
+	font-size: 2.5em;
+	padding: 7px;
+}
+.fa-bars:hover{
+	cursor: pointer;
+}
+
 @media all and (min-width: 956px) {
-	.displaySidebar {
+	.hamburgerDiv {
 		display: none;
+	}
+	.sidebarContainer {
+		width: 25%;
 	}
 }
 
@@ -94,18 +107,16 @@ h2 {
 	.sidebarContainer{
 		position: absolute;
 		left: -25%;
+		width: 25%;
 	}
 
 	.mapContainer {
 		width: 100%;
 	}
-
-	#displaySidebar{
-		width: 30px;
-   		height: 30px;
-    	cursor: pointer;
-	    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
-	    background-size: contain;
+	
+	.hamburgerDiv{
+		background-color: #008375;
 	}
+
 
 }

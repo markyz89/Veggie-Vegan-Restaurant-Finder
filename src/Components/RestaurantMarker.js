@@ -70,9 +70,12 @@ render() {
 				 	>
 			 			<React.Fragment>
 			 			{this.state.infoWindowOpen === true && (
-			 				<RestaurantInfo
-			 					marker={marker}
-			 				 />
+		 					<React.Fragment
+		 						ref={this.infoWindow}>
+				 				<RestaurantInfo
+				 					marker={marker}
+				 				 />
+			 				 </React.Fragment>
 			 				)}
 			 			</React.Fragment>
 		 			</Marker>	

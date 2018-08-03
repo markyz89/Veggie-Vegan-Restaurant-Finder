@@ -6,7 +6,7 @@ this.state = {
 
 
 
-
+ this.sidebarHandler = this.sidebarHandler.bind(this)
 
 			sidebarHandler() {
   let displaySidebar = this.state.displaySidebar

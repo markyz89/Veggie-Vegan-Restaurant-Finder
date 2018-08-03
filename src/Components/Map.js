@@ -9,17 +9,6 @@ class Map extends Component {
 	}
 
 
-	updateMarkerFromClick(e, key) {
-		
-		
-		// console.log("this won't work", key)
-		// if(key) {
-		//     this.setState({
-		//     listKey: key
-		//     })  
-	 //    }
-	}
-
 
 	render() {
 
