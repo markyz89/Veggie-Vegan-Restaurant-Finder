@@ -19,10 +19,7 @@ class App extends Component {
 
   this.onHandleClick = this.onHandleClick.bind(this)
   this.openMenu = this.openMenu.bind(this)
-  this.clickOutsideMenu = this.clickOutsideMenu.bind(this)
-  this.setWrapperRef = this.setWrapperRef.bind(this)
-  this.fas = this.fas.bind(this)
-  this.map = this.map.bind(this)
+
 
   }
 
@@ -30,7 +27,7 @@ class App extends Component {
 componentDidMount() {
 
 // console.log(ReactDOM.findDOMNode(this.refs.RestaurantMarker.infoWindow))
-document.addEventListener('click', this.clickOutsideMenu)
+
 
 fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&categoryId=4bf58dd8d48988d1d3941735&client_id=XTZDTYMEUQQBOBOF114BI0C0NLJJC0K3DMBP4Q25YZAC5AYS&client_secret=KWTAY4DDBU1FOPJNHZGVRAPAFKFXSMUZQDEDUPGADWBYAJ1N&v=20180731')
   .then(response => response.json())
@@ -41,9 +38,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&cate
   
 }
 
-componentWilUnmout() {
-  document.removeEventListener('click', this.clickOutsideMenu)
-}
+
 
 updateQuery(query) {
     this.setState({query: query})
@@ -66,44 +61,9 @@ openMenu() {
   const menuOpen = this.state.menuOpen
   this.setState({
     menuOpen: !menuOpen,
-    markerToAnimate: ''
   })
 }
 
-setWrapperRef(node) {
-      this.wrapperRef = node
-      console.log("node =",node)
-    }
-
-fas(node) {
-      this.fasRef = node
-      console.log("fas =",node)
-    }    
-map(node) {
-      this.mapRef = node
-      console.log("map =",node)
-    } 
-
-// infoWindow(node){
-  
-//   this.infoWindowRef=node
-//   console.log("IwRef =", node)
-// }   
-
-clickOutsideMenu(event) {
-  // console.log("I got the ", this.wrapperRef)
-    let sidebarRef = this.wrapperRef
-    console.log(event.target)
-    console.log(sidebarRef)
-    console.log(this.fasRef)
-
- if (this.state.menuOpen && !sidebarRef.contains(event.target) && !this.fasRef.contains(event.target)) {
-    console.log("close the sidebar!")
-    this.openMenu()
-    
-  }
-
-}
 
 
 
@@ -132,13 +92,13 @@ clickOutsideMenu(event) {
       <div className="App">
         <div className="componentContainer">
          <div className="hamburgerDiv"
-              ref={this.fas}>
+            >
            <i className="fas fa-bars"
               onClick={this.openMenu}
             ></i>
          </div>
          <div className={openOrClose}
-              ref={this.setWrapperRef}
+        
                          
              
                   >
@@ -159,7 +119,7 @@ clickOutsideMenu(event) {
             onHandleClick={this.onHandleClick}/>
           </div>
          <div className="mapContainer"
-              ref={this.map}>   
+             >   
           <Map
             restaurants = {this.state.restaurants}
             onMarkerClick = {this.toggleInfoWindow}
