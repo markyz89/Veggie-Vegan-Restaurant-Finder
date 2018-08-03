@@ -31,7 +31,7 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&cate
 }
 
 updateQuery(query) {
-    this.setState({query: query.trim()})
+    this.setState({query: query})
   } 
 
 
