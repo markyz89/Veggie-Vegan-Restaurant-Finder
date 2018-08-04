@@ -16,6 +16,8 @@ export default class RestaurantMarker extends Component {
 		this.handleClick = this.handleClick.bind(this)
 	}
 
+		
+		//event handler for click that opens the infoWindow above the marker
 		handleClick(e, key) {
 		let markerClick = e
 		// console.log("e in mapjs =", markerClick)
@@ -24,10 +26,8 @@ export default class RestaurantMarker extends Component {
 		this.setState({
 			infoWindowOpen: !infoWindowOpen
 		})
-		// this.props.onMarkerClick(e, key)
+		
 
-		// instead of doing this, maybe go the other way, create a marker and infowindow component,
-		// and store state in there. Won't have to store state in an object and will be easier to toggle!
 		
 	}
 
@@ -38,13 +38,14 @@ export default class RestaurantMarker extends Component {
 
 render() {
 
+	//logic that opens the infowindow and animates the marker
 	let markerToAnimate = this.props.markerToAnimate
 	let infoWindowOpen = this.state.infoWindowOpen
 	let animation = this.state.animation
 	// console.log(this.props.id)
 	if(markerToAnimate && infoWindowOpen === false)
 	markerToAnimate.map(m => {
-		console.log(m.id)
+		// console.log(m.id)
 		if(m.id === this.props.id)
 			this.setState({
 				infoWindowOpen: !infoWindowOpen,

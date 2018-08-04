@@ -9,6 +9,7 @@ export default class ListError extends React.Component {
 
 	}
 
+//Wasn't working as an Error Boundary. So now it's just a component rendered by a ternary
 
 // componentDidCatch(error, info) {
 //     console.log(info)

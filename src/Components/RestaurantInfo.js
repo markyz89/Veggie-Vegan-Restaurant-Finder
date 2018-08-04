@@ -1,6 +1,7 @@
 import React, { Component } from 'react' 
 import { InfoWindow, StreetViewPanorama } from 'react-google-maps'
 
+// Functional component that renders the information in the infoWindow
 
 function RestaurantInfo(props) {
 	let marker = props.marker

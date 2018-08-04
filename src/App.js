@@ -29,6 +29,7 @@ class App extends Component {
 
 componentDidMount() {
 
+// Fetches API data from Foursquare
 
 fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&categoryId=4bf58dd8d48988d1d3941735&client_id=XTZDTYMEUQQBOBOF114BI0C0NLJJC0K3DMBP4Q25YZAC5AYS&client_secret=KWTAY4DDBU1FOPJNHZGVRAPAFKFXSMUZQDEDUPGADWBYAJ1N&v=20180731')
   .then(response => response.json())
@@ -42,16 +43,16 @@ fetch('https://api.foursquare.com/v2/venues/search?ll=55.9505012,-3.1895519&cate
 }
 
 
-
+// sets the state in query to the value typed in by the user
 updateQuery(query) {
     this.setState({query: query})
   } 
 
 
+// Sets state to the marker that is to be animated with a one-time bounce
 onHandleClick(e, key) {
   // console.log("event is",e)
   // console.log("key is", key)
-  // console.log("key in app", listKey) 
   let markerToAnimate = this.state.restaurants.filter(r => r.id === key)
     // console.log("marker to animate is", markerToAnimate)
   this.setState({
@@ -60,6 +61,7 @@ onHandleClick(e, key) {
    
 }
 
+// Opens and closes the sidebar menu when the sidebar is hidden by default on mobile devices
 openMenu() {
   const menuOpen = this.state.menuOpen
   this.setState({
@@ -72,6 +74,7 @@ openMenu() {
 
 
   render() {
+    // logic for filtering the restaurant markers
     let filteredRestaurants
     if(this.state.query) {
       const match = new RegExp(escapeRegExp(this.state.query), 'i')
@@ -81,9 +84,9 @@ openMenu() {
     }
 
 
-    // console.log("in the render", listKey)
+   
 
-    
+    // styles applied to sidebar to show or hide it on mobile
     let openOrClose = "sidebarContainerFS sidebarContainerHide"
     if(this.state.menuOpen === true) {
       openOrClose = "sidebarContainerFS sidebarContainerShow"

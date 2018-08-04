@@ -11,8 +11,9 @@ export default class MapError extends React.Component {
 
 
 componentDidCatch(error, info) {
-    console.log(info)
+    console.log(error, info)
     this.setState({ mapError: true })
+
 	}
 
 	render() {

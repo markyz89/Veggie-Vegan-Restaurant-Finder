@@ -21,7 +21,7 @@ class Sidebar extends Component {
 
   render() {
 
-
+  	//takes the list of filtered restaurants and makes a list in the sidebar, with each element clickable
 
   	let filteredRestaurants = this.props.filteredRestaurants
 

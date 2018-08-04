@@ -13,23 +13,13 @@ class Map extends Component {
 
 	
 
-	componentDidMount() {
-		// window.contentDocument.getElementsByTagName('iframe')[0].setAttribute('title','title')
-
-	
-	}
-
 
 	render() {
-		// let iframeFinder = ('#document')
-		// console.log(iframeFinder)
-		// console.log("list key =",this.props.onHandleClick)
-		// console.log("or maybe list key =",this.props.listKey)
-		// console.log(this.props.markerToAnimate)
+
 		let markerToAnimate = this.props.markerToAnimate
 
 
-
+		// logic that generates the map from react-google-maps
 		const EdinburghMap = withGoogleMap (props => (
 
 
@@ -40,8 +30,10 @@ class Map extends Component {
 			<GoogleMap
 				defaultCenter = {{lat: 55.9505012, lng: -3.1895519 }}
 				defaultZoom = {14}
-				
-				// onTilesLoaded={document.frames[0].setAttribute('title','flogbad')}
+				onTilesLoaded={() =>
+     			// adds title to iframe
+     			(document.getElementsByTagName('iframe')[0].title = 'Google Maps')
+    			}
 
 
 
@@ -74,7 +66,6 @@ class Map extends Component {
 			
 				<div>
 					<EdinburghMap
-					// onTilesLoaded={document.getElementsByTagName('iframe')[0].title = 'Google Maps'}
 					containerElement={<div className="containerElement"
 
 					/>				
@@ -97,31 +88,3 @@ export default Map
 
 
 
-
-
-// credit Yelstin Fernandes for getting me started with react-google-maps
-//https://medium.com/@yelstin.fernandes/render-a-map-component-using-react-google-maps-5f7fb3e418bb
-
-// 55.9541839,-3.2004868 Hendersons
-{/*
-	
-
-				{props.isMarkerShown && <Marker position={{
-					lat: 55.9541839,
-					lng: -3.2004868}}/>}
-
-
-
-			const markers = [{
-				location: {
-					lat: 55.9541839,
-					lng: -3.2004868
-				}
-			}]
-
-					<Marker
-				position = {this.props.position}
-				 />
-
-
-*/}	
